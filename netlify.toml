@@ -1,0 +1,3 @@
+[template.environment]
+  OPENAI_API_KEY = "Add your OPENAI Key"
+  MONGODB_URI = "Add your MongoDB URI"
