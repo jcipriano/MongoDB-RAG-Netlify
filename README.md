@@ -17,7 +17,7 @@ Before you begin, make sure you have the following ready:
 Follow the below-mentioned steps to deploy the app on Vercel.
 
 #### Step 1: Click the below button to navigate to the Netlify deployment page
-[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/utsavMongoDB/MongoDB_RAG_Netlify)
+[![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mongodb-partners/MongoDB-RAG-Netlify)
 
 #### Step 2: Add Environment Variables
 
