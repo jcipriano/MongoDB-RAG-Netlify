@@ -14,7 +14,7 @@ Before you begin, make sure you have the following ready:
 
 
 ## Steps to Deploy 
-Follow the below-mentioned steps to deploy the app on Vercel.
+Follow the below-mentioned steps to deploy the app :
 
 #### Step 1: Click the below button to navigate to the Netlify deployment page
 [![Deploy with Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/mongodb-partners/MongoDB-RAG-Netlify)
