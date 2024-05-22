@@ -33,20 +33,23 @@ export async function POST(req: NextRequest) {
           // Collect the parsed data from the PDF file
           parsedText = data.text;
 
-          // Spread data into chunks 
+          // Spread data into chunks
+          console.log('Spread data into chunks');
           const chunks = await new CharacterTextSplitter({
             separator: "\n",
             chunkSize: 1000,
             chunkOverlap: 100
           }).splitText(parsedText)
-          console.log(chunks.length)
+          console.log('chunk length:', chunks.length)
 
           // Convert chunks to Vectors and store into MongoDB
+          console.log('Convert chunks to Vectors and store into MongoDB');
           await MongoDBAtlasVectorSearch.fromTexts(
             chunks, [],
             getEmbeddingsTransformer(),
             searchArgs()
           )});
+          console.log('Uploaded to MongoDB');
         return NextResponse.json({ message: "Uploaded to MongoDB" }, { status: 200 });
 
       } else {
