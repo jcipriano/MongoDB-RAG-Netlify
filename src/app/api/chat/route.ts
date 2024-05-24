@@ -14,26 +14,33 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
 
+        console.log('Create OpenAI model');
         const model = new ChatOpenAI({
             temperature: 0.8,
             streaming: true,
             callbacks: [handlers],
         });
 
+        console.log('Get vector retretriever');
         const retriever = vectorStore().asRetriever({ 
             "searchType": "mmr", 
             "searchKwargs": { "fetchK": 10, "lambda": 0.25 } 
         })
+
+        console.log('Retrieving conversation chain');
         const conversationChain = ConversationalRetrievalQAChain.fromLLM(model, retriever, {
             memory: new BufferMemory({
               memoryKey: "chat_history",
             }),
           })
+
+        console.log('Invoke conversation chain');
         conversationChain.invoke({
             "question": question
         })
 
-        return new Response(stream);
+        console.log('Return stream');
+        return new StreamingTextResponse(stream);
     }
     catch (e) {
         return NextResponse.json({ message: 'Error Processing' }, { status: 500 });
