@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             "question": question
         })
 
-        return new StreamingTextResponse(stream);
+        return new Response(stream);
     }
     catch (e) {
         return NextResponse.json({ message: 'Error Processing' }, { status: 500 });
