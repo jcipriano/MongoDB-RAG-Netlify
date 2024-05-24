@@ -13,15 +13,36 @@ export async function POST(req: Request) {
         const body = await req.json();
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
-
+        
+        // LLM
+        handlers.handleLLMStart = async function () {
+            console.log('handleLLMError:');
+        }
+        handlers.handleLLMEnd = async function () {
+            console.log('handleLLMError:');
+        }
         handlers.handleLLMError = async function (e:Error) {
             console.log('handleLLMError:', e);
         }
 
+        // Chain
+        handlers.handleChainStart = async function () {
+            console.log('handleChainStart:');
+        }
+        handlers.handleChainEnd = async function () {
+            console.log('handleChainEnd:');
+        }
         handlers.handleChainError = async function (e:Error) {
             console.log('handleChainError:', e);
         }
 
+        // Tool
+        handlers.handleToolStart = async function () {
+            console.log('handleToolStart:');
+        }
+        handlers.handleToolEnd = async function (eror) {
+            console.log('handleToolEnd:');
+        }
         handlers.handleToolError = async function (e:Error) {
             console.log('handleToolError:', e);
         }
