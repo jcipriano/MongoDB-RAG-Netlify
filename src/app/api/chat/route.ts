@@ -14,6 +14,18 @@ export async function POST(req: Request) {
         const messages: Message[] = body.messages ?? [];
         const question = messages[messages.length - 1].content;
 
+        handlers.handleLLMError = async function (e:Error) {
+            console.log('handleLLMError:', e);
+        }
+
+        handlers.handleChainError = async function (e:Error) {
+            console.log('handleChainError:', e);
+        }
+
+        handlers.handleToolError = async function (e:Error) {
+            console.log('handleToolError:', e);
+        }
+        
         console.log('Create OpenAI model');
         const model = new ChatOpenAI({
             temperature: 0.8,
